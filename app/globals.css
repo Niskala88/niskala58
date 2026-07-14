@@ -1,0 +1,316 @@
+:root {
+  --ink: #14101f;
+  --surface: #1e1830;
+  --surface-2: #2a2240;
+  --line: #3a3154;
+  --moon: #ece7f6;
+  --muted: #9c93b8;
+  --kunyit: #e3a94e;
+  --kunyit-deep: #8a5f1e;
+  --rosella: #c4526b;
+  --sage: #7fa98d;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--ink);
+  color: var(--moon);
+  font-family: var(--font-body), sans-serif;
+  font-size: 15.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 28px 20px 110px;
+  min-height: 100vh;
+}
+
+h1, h2, h3 { font-family: var(--font-display), serif; font-weight: 500; }
+h1 { font-size: 30px; line-height: 1.2; letter-spacing: 0.01em; }
+h2 { font-size: 20px; }
+h3 { font-size: 17px; }
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kunyit);
+  margin-bottom: 6px;
+}
+
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-top: 14px;
+}
+
+.card-quiet { background: var(--surface-2); border: none; }
+
+.pill {
+  display: inline-block;
+  font-size: 12.5px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  margin: 0 6px 6px 0;
+}
+.pill-gold { border-color: var(--kunyit-deep); color: var(--kunyit); }
+.pill-rose { border-color: var(--rosella); color: var(--rosella); }
+
+button, .btn {
+  font-family: var(--font-body), sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--moon);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+button:hover, .btn:hover { background: var(--surface-2); }
+button:active, .btn:active { transform: scale(0.98); }
+button:focus-visible, a:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--kunyit);
+  outline-offset: 2px;
+}
+
+.btn-gold {
+  background: var(--kunyit);
+  color: #241a08;
+  border-color: var(--kunyit);
+}
+.btn-gold:hover { background: #eebb69; }
+
+textarea, input[type="text"] {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--moon);
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  padding: 12px;
+  resize: vertical;
+}
+textarea::placeholder, input::placeholder { color: var(--muted); }
+
+/* Lens cards — the signature element */
+.lens {
+  border-radius: 0;
+  border-left: 3px solid var(--line);
+  padding: 14px 16px;
+  margin-top: 12px;
+  background: var(--surface);
+}
+.lens-jung { border-left-color: var(--kunyit); }
+.lens-primbon { border-left-color: var(--sage); }
+.lens-islamic { border-left-color: var(--rosella); }
+.lens .lens-name {
+  font-family: var(--font-display), serif;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.lens p { font-size: 14.5px; color: var(--moon); }
+.lens .small { color: var(--muted); }
+
+/* Oracle card */
+.oracle-card {
+  background: var(--surface);
+  border: 1px solid var(--kunyit-deep);
+  border-radius: 18px;
+  padding: 26px 22px;
+  text-align: center;
+  margin-top: 16px;
+}
+.oracle-essence {
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  color: var(--kunyit);
+  font-size: 15px;
+}
+.oracle-name { font-size: 28px; margin: 6px 0 2px; }
+.oracle-latin { font-size: 13px; color: var(--muted); font-style: italic; }
+.oracle-message { margin-top: 14px; text-align: left; }
+.tend {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--surface-2);
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+.tend b { color: var(--kunyit); font-weight: 700; }
+
+/* Weton dial */
+.weton-row { display: flex; gap: 14px; align-items: center; }
+.weton-neptu {
+  min-width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 1.5px solid var(--kunyit);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-family: var(--font-display), serif;
+}
+.weton-neptu .n { font-size: 24px; color: var(--kunyit); line-height: 1; }
+.weton-neptu .l { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Bottom nav */
+.nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(20, 16, 31, 0.92);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
+  max-width: 100%;
+}
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 72px;
+}
+.nav a.active { color: var(--kunyit); }
+.nav svg { width: 22px; height: 22px; }
+
+.dream-item { display: block; text-decoration: none; color: inherit; }
+.dream-item:hover { border-color: var(--kunyit-deep); }
+
+/* Bazi pillars */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.pillar-card {
+  background: var(--surface-2);
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+}
+.pillar-card .pl-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.pillar-card .pl-hanzi { font-family: var(--font-display), serif; font-size: 22px; color: var(--kunyit); line-height: 1.1; }
+.pillar-card .pl-pinyin { font-size: 11px; color: var(--moon); margin-top: 4px; }
+.pillar-card .pl-element { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+.element-bars { margin-top: 12px; }
+.element-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.element-row .el-label { width: 52px; font-size: 12.5px; color: var(--muted); flex-shrink: 0; }
+.element-row .el-track { flex: 1; height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.element-row .el-fill { height: 100%; border-radius: 4px; }
+.element-row .el-count { width: 16px; font-size: 12px; color: var(--muted); text-align: right; flex-shrink: 0; }
+
+.section-divider {
+  margin-top: 28px;
+  margin-bottom: 4px;
+}
+.section-divider h2 { margin-bottom: 2px; }
+
+.hour-strip {
+  display: flex;
+  overflow-x: auto;
+  gap: 6px;
+  margin-top: 10px;
+  padding-bottom: 4px;
+}
+.hour-chip {
+  flex-shrink: 0;
+  min-width: 54px;
+  text-align: center;
+  background: var(--surface-2);
+  border-radius: 8px;
+  padding: 8px 4px;
+  font-size: 11px;
+}
+.hour-chip.now { background: var(--kunyit); color: #241a08; }
+.hour-chip .hc-time { color: var(--muted); font-size: 10px; }
+.hour-chip.now .hc-time { color: #4a3410; }
+.hour-chip .hc-planet { font-weight: 600; margin-top: 2px; }
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  max-width: 520px;
+  margin: 0 auto;
+  background: rgba(20, 16, 31, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.app-header-logo { display: flex; align-items: center; }
+
+.lang-toggle {
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+.lang-btn {
+  border: none;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+}
+.lang-btn.active {
+  background: var(--kunyit);
+  color: #241a08;
+}
+.lang-btn:hover { background: var(--surface-2); }
+.lang-btn.active:hover { background: #eebb69; }
+
+.oracle-pulling {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+}
+.moon-spinner {
+  font-size: 52px;
+  line-height: 1;
+  animation: moon-pulse 0.9s ease-in-out infinite;
+}
+@keyframes moon-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+.spin {
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
