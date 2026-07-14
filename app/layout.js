@@ -20,6 +20,13 @@ const karla = Karla({
 export const metadata = {
   title: "Niskala",
   description: "Energetic weather, dreams, and the botanical oracle.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {

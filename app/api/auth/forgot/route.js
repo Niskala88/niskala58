@@ -63,7 +63,15 @@ export async function POST(request) {
     const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
     await sql`UPDATE users SET reset_token = ${token}, reset_token_expires = ${expires.toISOString()} WHERE id = ${rows[0].id}`;
 
-    const origin = new URL(request.url).origin;
+    // In proxied dev environments (Codespaces, ngrok, etc.) the
+    // server's own request.url is often "localhost" even though the
+    // browser is on a public forwarded URL. Prefer the forwarded
+    // headers the proxy sets, and only fall back to request.url when
+    // they're absent (e.g. plain localhost with no proxy, or once
+    // deployed behind Vercel which sets these correctly too).
+    const forwardedHost = request.headers.get("x-forwarded-host") || request.headers.get("host");
+    const forwardedProto = request.headers.get("x-forwarded-proto") || "https";
+    const origin = forwardedHost ? `${forwardedProto}://${forwardedHost}` : new URL(request.url).origin;
     const link = `${origin}/reset-password?token=${token}`;
 
     const resend = new Resend(apiKey);
@@ -82,7 +90,7 @@ export async function POST(request) {
       // leak whether an email is registered).
       console.error("forgot-password: Resend rejected the send:", sendError);
     } else {
-      console.log("forgot-password: email sent, id:", data?.id);
+      console.log("forgot-password: email sent, id:", data?.id, "| link used:", link);
     }
 
     return genericResponse();
